@@ -1,0 +1,14 @@
+{
+  "name": "divya-makeup-studio",
+  "version": "1.0.0",
+  "description": "Premium 3D luxury makeup studio website",
+  "main": "index.html",
+  "scripts": {
+    "dev": "lite-server"
+  },
+  "author": "Your Name",
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}

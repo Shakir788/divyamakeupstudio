@@ -1,0 +1,433 @@
+/* ============================================
+   DIVYA MAKEUP STUDIO — ANIMATIONS
+   ============================================ */
+
+/* ============================================
+   KEYFRAMES
+   ============================================ */
+
+/* Fade Up */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Fade Down */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Fade Left */
+@keyframes fadeLeft {
+  from { opacity: 0; transform: translateX(50px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Fade Right */
+@keyframes fadeRight {
+  from { opacity: 0; transform: translateX(-50px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Fade In */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Scale Up */
+@keyframes scaleUp {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* Float — hero element mein use hoga */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-14px); }
+}
+
+/* Float Slow */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50%       { transform: translateY(-8px) rotate(2deg); }
+}
+
+/* Shimmer — gold/luxury text pe */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Pulse Glow — WhatsApp button */
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 6px 30px rgba(37,211,102,.45), inset 0 1px 0 rgba(255,255,255,.3); }
+  50%       { box-shadow: 0 6px 50px rgba(37,211,102,.70), inset 0 1px 0 rgba(255,255,255,.3); }
+}
+
+/* Rose Pulse */
+@keyframes rosePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201,116,138,.4); }
+  50%       { box-shadow: 0 0 0 12px rgba(201,116,138,.0); }
+}
+
+/* Spin Slow — decorative elements */
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Spin Reverse */
+@keyframes spinReverse {
+  from { transform: rotate(360deg); }
+  to   { transform: rotate(0deg); }
+}
+
+/* Draw Line — underline animation */
+@keyframes drawLine {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+/* Count Up — number animation */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Blob morph — background shapes */
+@keyframes blobMorph {
+  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25%       { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  50%       { border-radius: 50% 60% 30% 60% / 30% 60% 70% 40%; }
+  75%       { border-radius: 60% 40% 60% 30% / 60% 30% 40% 70%; }
+}
+
+/* Gradient shift — background */
+@keyframes gradShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Bounce In */
+@keyframes bounceIn {
+  0%   { opacity: 0; transform: scale(0.3); }
+  50%  { opacity: 1; transform: scale(1.05); }
+  70%  { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+/* Slide Up Stagger */
+@keyframes slideUpStagger {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Twinkle — star/sparkle */
+@keyframes twinkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: .4; transform: scale(.7); }
+}
+
+/* ============================================
+   SCROLL REVEAL — BASE CLASSES
+   ============================================ */
+
+/* Elements start hidden */
+[data-reveal] {
+  opacity: 0;
+  transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+  transition-property: opacity, transform;
+}
+
+/* Triggered by JS when in viewport */
+[data-reveal].revealed {
+  opacity: 1;
+  transform: none !important;
+}
+
+/* Directions */
+[data-reveal="up"]    { transform: translateY(50px); transition-duration: .7s; }
+[data-reveal="down"]  { transform: translateY(-40px); transition-duration: .7s; }
+[data-reveal="left"]  { transform: translateX(60px); transition-duration: .7s; }
+[data-reveal="right"] { transform: translateX(-60px); transition-duration: .7s; }
+[data-reveal="fade"]  { transform: none; transition-duration: .6s; }
+[data-reveal="scale"] { transform: scale(0.88); transition-duration: .65s; }
+[data-reveal="flip"]  { transform: rotateY(25deg) translateX(30px); transition-duration: .8s; }
+
+/* Stagger delays */
+[data-delay="100"] { transition-delay: .1s; }
+[data-delay="200"] { transition-delay: .2s; }
+[data-delay="300"] { transition-delay: .3s; }
+[data-delay="400"] { transition-delay: .4s; }
+[data-delay="500"] { transition-delay: .5s; }
+[data-delay="600"] { transition-delay: .6s; }
+[data-delay="700"] { transition-delay: .7s; }
+[data-delay="800"] { transition-delay: .8s; }
+
+/* ============================================
+   HERO ANIMATIONS — Auto play on load
+   ============================================ */
+
+.hero-animate-1 {
+  animation: fadeRight .9s cubic-bezier(0.23,1,0.32,1) .2s both;
+}
+
+.hero-animate-2 {
+  animation: fadeRight .9s cubic-bezier(0.23,1,0.32,1) .4s both;
+}
+
+.hero-animate-3 {
+  animation: fadeRight .9s cubic-bezier(0.23,1,0.32,1) .6s both;
+}
+
+.hero-animate-4 {
+  animation: fadeRight .9s cubic-bezier(0.23,1,0.32,1) .8s both;
+}
+
+.hero-animate-img {
+  animation: fadeLeft .9s cubic-bezier(0.23,1,0.32,1) .4s both;
+}
+
+/* ============================================
+   FLOATING ELEMENTS
+   ============================================ */
+
+.float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.float-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.float-delay-1 { animation-delay: .5s; }
+.float-delay-2 { animation-delay: 1s; }
+.float-delay-3 { animation-delay: 1.5s; }
+
+/* ============================================
+   SHIMMER TEXT — Gold luxury effect
+   ============================================ */
+
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    var(--gold-dark) 0%,
+    var(--gold-light) 30%,
+    var(--gold) 50%,
+    var(--gold-light) 70%,
+    var(--gold-dark) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+/* ============================================
+   BLOB SHAPES — Background decoration
+   ============================================ */
+
+.blob {
+  position: absolute;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation: blobMorph 10s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.blob-1 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(242,196,206,.35) 0%, transparent 70%);
+  top: -100px; right: -100px;
+  animation-duration: 12s;
+}
+
+.blob-2 {
+  width: 350px; height: 350px;
+  background: radial-gradient(circle, rgba(201,169,110,.18) 0%, transparent 70%);
+  bottom: -80px; left: -60px;
+  animation-duration: 9s;
+  animation-delay: -3s;
+}
+
+.blob-3 {
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(201,116,138,.15) 0%, transparent 70%);
+  top: 40%; left: 20%;
+  animation-duration: 14s;
+  animation-delay: -6s;
+}
+
+/* ============================================
+   SPINNING DECORATIVE RING
+   ============================================ */
+
+.spin-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(201,169,110,.2);
+  animation: spinSlow 20s linear infinite;
+  pointer-events: none;
+}
+
+.spin-ring-reverse {
+  animation: spinReverse 15s linear infinite;
+}
+
+/* ============================================
+   CARD HOVER — 3D TILT
+   ============================================ */
+
+.tilt-card {
+  transition: transform .3s cubic-bezier(0.23,1,0.32,1),
+              box-shadow .3s cubic-bezier(0.23,1,0.32,1);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* JS adds inline transform for mouse tilt */
+
+/* ============================================
+   IMAGE HOVER — Scale + Reveal Overlay
+   ============================================ */
+
+.img-hover-wrap {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  position: relative;
+}
+
+.img-hover-wrap img {
+  transition: transform .6s cubic-bezier(0.23,1,0.32,1);
+}
+
+.img-hover-wrap:hover img {
+  transform: scale(1.07);
+}
+
+.img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(107,58,74,.6) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity .4s var(--ease);
+  display: flex;
+  align-items: flex-end;
+  padding: 1.4rem;
+}
+
+.img-hover-wrap:hover .img-overlay {
+  opacity: 1;
+}
+
+/* ============================================
+   UNDERLINE DRAW ANIMATION
+   ============================================ */
+
+.underline-draw {
+  position: relative;
+  display: inline-block;
+}
+
+.underline-draw::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg, var(--rose), var(--gold));
+  transition: width .5s cubic-bezier(0.23,1,0.32,1);
+}
+
+.underline-draw:hover::after,
+.underline-draw.active::after {
+  width: 100%;
+}
+
+/* ============================================
+   PULSE ANIMATIONS
+   ============================================ */
+
+.pulse-rose {
+  animation: rosePulse 2.5s ease-in-out infinite;
+}
+
+.whatsapp-float {
+  animation: pulseGlow 2.5s ease-in-out infinite;
+}
+
+/* ============================================
+   SPARKLE — Decorative stars
+   ============================================ */
+
+.sparkle {
+  display: inline-block;
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+.sparkle:nth-child(2) { animation-delay: .3s; }
+.sparkle:nth-child(3) { animation-delay: .6s; }
+.sparkle:nth-child(4) { animation-delay: .9s; }
+
+/* ============================================
+   PAGE TRANSITION
+   ============================================ */
+
+.page-enter {
+  animation: fadeIn .5s ease both;
+}
+
+/* ============================================
+   LOADING SKELETON (for images)
+   ============================================ */
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(242,196,206,.3) 25%,
+    rgba(242,196,206,.6) 50%,
+    rgba(242,196,206,.3) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-md);
+}
+
+/* ============================================
+   COUNTER NUMBER ANIMATION
+   ============================================ */
+
+.count-animate {
+  animation: countUp .6s cubic-bezier(0.23,1,0.32,1) both;
+}
+
+/* ============================================
+   NAVBAR SLIDE DOWN
+   ============================================ */
+
+.navbar {
+  animation: fadeDown .6s cubic-bezier(0.23,1,0.32,1) both;
+}
+
+/* ============================================
+   REDUCED MOTION — Accessibility
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}

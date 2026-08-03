@@ -1,0 +1,870 @@
+/* ============================================
+   DIVYA MAKEUP STUDIO — MAIN STYLESHEET
+   Design: 3D Luxury Feminine Premium
+   Author: Divya Studio
+   ============================================ */
+
+/* ── GOOGLE FONTS ── */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&family=Great+Vibes&display=swap');
+
+/* ============================================
+   CSS VARIABLES — DESIGN TOKENS
+   ============================================ */
+:root {
+  /* — Colors — */
+  --blush:        #F2C4CE;
+  --blush-light:  #FAE8ED;
+  --rose:         #C9748A;
+  --rose-dark:    #A85A70;
+  --gold:         #C9A96E;
+  --gold-light:   #E8D5A3;
+  --gold-dark:    #A07840;
+  --deep:         #6B3A4A;
+  --deeper:       #4A2238;
+  --cream:        #FDF6F0;
+  --cream-dark:   #F5E6DC;
+  --white:        #FFFFFF;
+  --text:         #3D2030;
+  --muted:        #9B7080;
+  --muted-light:  #C4A0AE;
+
+  /* — 3D Shadow System — */
+  --shadow-sm:    0 2px 8px rgba(107,58,74,.10);
+  --shadow-md:    0 8px 32px rgba(107,58,74,.14);
+  --shadow-lg:    0 20px 60px rgba(107,58,74,.18);
+  --shadow-xl:    0 40px 100px rgba(107,58,74,.22);
+  --shadow-gold:  0 8px 32px rgba(201,169,110,.30);
+  --shadow-rose:  0 8px 32px rgba(201,116,138,.30);
+  --shadow-inner: inset 0 2px 8px rgba(107,58,74,.08);
+
+  /* — 3D Gradients — */
+  --grad-hero:    linear-gradient(135deg, #FDF6F0 0%, #FAE8ED 50%, #F2C4CE 100%);
+  --grad-rose:    linear-gradient(145deg, #E8A0B0 0%, #C9748A 50%, #A85A70 100%);
+  --grad-gold:    linear-gradient(145deg, #E8D5A3 0%, #C9A96E 50%, #A07840 100%);
+  --grad-deep:    linear-gradient(145deg, #8B4A5A 0%, #6B3A4A 50%, #4A2238 100%);
+  --grad-card:    linear-gradient(145deg, rgba(255,255,255,.95) 0%, rgba(253,246,240,.90) 100%);
+  --grad-glass:   linear-gradient(145deg, rgba(255,255,255,.25) 0%, rgba(255,255,255,.05) 100%);
+
+  /* — Typography — */
+  --font-display: 'Cormorant Garamond', serif;
+  --font-script:  'Great Vibes', cursive;
+  --font-body:    'Jost', sans-serif;
+
+  /* — Spacing — */
+  --section-pad:  100px 7vw;
+  --radius-sm:    12px;
+  --radius-md:    20px;
+  --radius-lg:    32px;
+  --radius-xl:    48px;
+  --radius-pill:  999px;
+
+  /* — Transitions — */
+  --ease:         cubic-bezier(0.23, 1, 0.32, 1);
+  --trans-fast:   0.2s var(--ease);
+  --trans-med:    0.35s var(--ease);
+  --trans-slow:   0.6s var(--ease);
+}
+
+/* ============================================
+   CONTAINER
+   ============================================ */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ============================================
+   RESET & BASE
+   ============================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul { list-style: none; }
+
+button { cursor: pointer; font-family: var(--font-body); }
+
+/* ============================================
+   TYPOGRAPHY SCALE
+   ============================================ */
+.display-xl {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 300;
+  line-height: 1.08;
+  letter-spacing: -.01em;
+}
+
+.display-lg {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4.5vw, 4rem);
+  font-weight: 300;
+  line-height: 1.12;
+}
+
+.display-md {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.script {
+  font-family: var(--font-script);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  color: var(--rose);
+}
+
+.eyebrow {
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.body-lg { font-size: 1rem; line-height: 1.8; color: var(--muted); }
+.body-md { font-size: .9rem; line-height: 1.75; color: var(--muted); }
+.body-sm { font-size: .8rem; line-height: 1.7; color: var(--muted); }
+
+em { font-style: italic; color: var(--rose); }
+
+/* ============================================
+   NAVBAR (PRO UPGRADE)
+   ============================================ */
+.navbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+    z-index: 1000;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(253, 246, 240, 0.75); 
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+    box-shadow: none;
+}
+
+.navbar.scrolled {
+    height: 80px;
+    background: rgba(253, 246, 240, 0.98);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid var(--gold-light);
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+}
+
+.nav-links a {
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text);
+    position: relative;
+    padding-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--gold-dark);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: var(--gold-dark);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+/* Navbar Book Now Button */
+.nav-cta.fixed-cta {
+  background: var(--gold-dark) !important;
+  color: #ffffff !important;
+  padding: 10px 24px;
+  border-radius: 30px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  border: none;
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: var(--trans-med);
+}
+
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* Mobile Menu */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: var(--cream);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.2rem;
+}
+
+.mobile-nav.open { display: flex; }
+
+.mobile-nav a {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--deep);
+  transition: color var(--trans-fast);
+}
+
+.mobile-nav a:hover { color: var(--rose); }
+
+.mobile-nav-close {
+  position: absolute;
+  top: 24px; right: 7vw;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  color: var(--deep);
+  cursor: pointer;
+}
+
+/* ============================================
+   SECTION LAYOUT
+   ============================================ */
+.section {
+  padding: var(--section-pad);
+  position: relative;
+}
+
+.section-header {
+  margin-bottom: 4rem;
+}
+
+.section-header.center {
+  text-align: center;
+}
+
+.section-header.center .body-lg {
+  max-width: 560px;
+  margin: 1rem auto 0;
+}
+
+/* ============================================
+   3D BUTTONS
+   ============================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  border: none;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--trans-med);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,.15);
+  opacity: 0;
+  transition: opacity var(--trans-fast);
+}
+
+.btn:hover::before { opacity: 1; }
+
+.btn-primary {
+  background: var(--grad-rose);
+  color: var(--white);
+  padding: 14px 34px;
+  font-size: .82rem;
+  box-shadow: var(--shadow-rose), inset 0 1px 0 rgba(255,255,255,.2);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 16px 48px rgba(201,116,138,.40), inset 0 1px 0 rgba(255,255,255,.2);
+}
+
+.btn-primary:active { transform: translateY(-1px); }
+
+.btn-gold {
+  background: var(--grad-gold);
+  color: var(--white);
+  padding: 14px 34px;
+  font-size: .82rem;
+  box-shadow: var(--shadow-gold), inset 0 1px 0 rgba(255,255,255,.2);
+}
+
+.btn-gold:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 16px 48px rgba(201,169,110,.45);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--rose);
+  padding: 13px 32px;
+  font-size: .82rem;
+  border: 1.5px solid var(--rose);
+  box-shadow: none;
+}
+
+.btn-outline:hover {
+  background: var(--rose);
+  color: var(--white);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-rose);
+}
+
+.btn-ghost {
+  background: rgba(255,255,255,.1);
+  color: var(--white);
+  padding: 13px 32px;
+  font-size: .82rem;
+  border: 1.5px solid rgba(255,255,255,.3);
+  backdrop-filter: blur(10px);
+}
+
+.btn-ghost:hover {
+  background: rgba(255,255,255,.2);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   3D CARDS — BASE
+   ============================================ */
+.card-3d {
+  background: var(--grad-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(242,196,206,.3);
+  box-shadow: var(--shadow-md),
+              inset 0 1px 0 rgba(255,255,255,.8),
+              inset 0 -1px 0 rgba(107,58,74,.05);
+  transition: all var(--trans-med);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-3d::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.8), transparent);
+}
+
+.card-3d:hover {
+  transform: translateY(-8px) rotateX(2deg);
+  box-shadow: var(--shadow-xl),
+              inset 0 1px 0 rgba(255,255,255,.9),
+              0 0 0 1px rgba(201,116,138,.15);
+}
+
+/* ============================================
+   GLASS CARD
+   ============================================ */
+.card-glass {
+  background: var(--grad-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255,255,255,.25);
+  box-shadow: 0 8px 32px rgba(107,58,74,.12),
+              inset 0 1px 0 rgba(255,255,255,.3);
+}
+
+/* ============================================
+   LUXURY DIVIDER
+   ============================================ */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,169,110,.4), transparent);
+}
+
+.divider-icon {
+  color: var(--gold);
+  font-size: .85rem;
+  letter-spacing: .15em;
+}
+
+/* ============================================
+   BADGE / TAG
+   ============================================ */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+  font-size: .7rem;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.badge-rose {
+  background: rgba(201,116,138,.12);
+  color: var(--rose);
+  border: 1px solid rgba(201,116,138,.2);
+}
+
+.badge-gold {
+  background: rgba(201,169,110,.12);
+  color: var(--gold-dark);
+  border: 1px solid rgba(201,169,110,.25);
+}
+
+.badge-deep {
+  background: var(--deep);
+  color: var(--white);
+}
+
+/* ============================================
+   FLOATING WHATSAPP
+   ============================================ */
+.whatsapp-float {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 500;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #2ecc71, #25D366, #1da851);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  box-shadow: 0 6px 30px rgba(37,211,102,.45),
+              inset 0 1px 0 rgba(255,255,255,.3);
+  transition: all var(--trans-med);
+  text-decoration: none;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.12) translateY(-3px);
+  box-shadow: 0 16px 50px rgba(37,211,102,.55);
+}
+
+/* ============================================
+   SCROLL TO TOP
+   ============================================ */
+.scroll-top {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  z-index: 500;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--grad-rose);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  box-shadow: var(--shadow-rose);
+  cursor: pointer;
+  border: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: all var(--trans-med);
+}
+
+.scroll-top.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.scroll-top:hover { transform: translateY(-3px); }
+
+/* ============================================
+   SECTION BACKGROUNDS
+   ============================================ */
+.bg-cream    { background: var(--cream); }
+.bg-white    { background: var(--white); }
+.bg-soft     { background: var(--blush-light); }
+.bg-deep     { background: var(--grad-deep); }
+
+/* ============================================
+   UTILITY
+   ============================================ */
+.text-center  { text-align: center; }
+.text-rose    { color: var(--rose); }
+.text-gold    { color: var(--gold); }
+.text-deep    { color: var(--deep); }
+.text-white   { color: var(--white); }
+.text-muted   { color: var(--muted); }
+
+.mt-1 { margin-top: .5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mt-4 { margin-top: 2rem; }
+.mt-5 { margin-top: 3rem; }
+
+.mb-1 { margin-bottom: .5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+.mb-4 { margin-bottom: 2rem; }
+
+.flex         { display: flex; }
+.flex-center  { display: flex; align-items: center; justify-content: center; }
+.gap-1        { gap: .5rem; }
+.gap-2        { gap: 1rem; }
+.gap-3        { gap: 1.5rem; }
+.gap-4        { gap: 2rem; }
+
+/* ============================================
+   GRID SYSTEMS
+   ============================================ */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.6rem; }
+.grid-auto { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.8rem; }
+
+/* ============================================
+   PAGE HEADER (inner pages)
+   ============================================ */
+.page-header {
+  background: var(--grad-deep);
+  padding: 160px 7vw 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-header::before {
+  content: '';
+  position: absolute;
+  top: -100px; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(242,196,206,.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.page-header-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 300;
+  color: var(--white);
+  margin: .8rem 0;
+}
+
+.page-header-sub {
+  font-size: .9rem;
+  color: rgba(255,255,255,.6);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.75;
+}
+
+/* ============================================
+   STAR RATING
+   ============================================ */
+.stars {
+  color: var(--gold);
+  font-size: .9rem;
+  letter-spacing: .05em;
+}
+
+/* ============================================
+   PRICE TAG
+   ============================================ */
+.price {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--rose);
+}
+
+.price-from {
+  font-size: .7rem;
+  font-weight: 400;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  display: block;
+  margin-bottom: 2px;
+}
+
+/* ============================================
+   FOOTER (PRO UPGRADE)
+   ============================================ */
+.footer {
+  background: var(--grad-deep);
+  color: rgba(255,255,255,.65);
+  padding: 70px 7vw 30px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 3vw;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.footer-logo-main {
+  font-family: var(--font-script);
+  font-size: 2.2rem;
+  color: var(--white);
+  display: block;
+  line-height: 1;
+}
+
+.footer-logo-sub {
+  font-size: .6rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 4px;
+  display: block;
+}
+
+.footer-desc {
+  font-size: .84rem;
+  line-height: 1.8;
+  margin-top: 1rem;
+  color: rgba(255,255,255,.5);
+}
+
+.footer-brand-badge {
+  background: #ffffff;
+  padding: 12px 18px;
+  border-radius: 12px;
+  display: inline-block;
+  margin-bottom: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.footer-socials {
+  display: flex;
+  gap: .7rem;
+  margin-top: 1.4rem;
+}
+
+.footer-social-btn {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--white);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.footer-social-btn:hover {
+  background: var(--gold-dark);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(201,169,110,0.3);
+}
+
+.footer-heading {
+  font-size: .7rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+  font-weight: 500;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+}
+
+.footer-links a {
+  font-size: .84rem;
+  color: rgba(255,255,255,.5);
+  transition: color var(--trans-fast);
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.footer-links a:hover { color: var(--blush); }
+
+.footer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: .8rem;
+  font-size: .84rem;
+  color: rgba(255,255,255,.5);
+  margin-bottom: .8rem;
+}
+
+.footer-contact-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  margin-right: 12px; color: var(--gold);
+}
+
+.footer-bottom {
+  padding-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: .75rem;
+  color: rgba(255,255,255,.3);
+}
+
+.footer-bottom span { color: var(--blush); }
+
+/* ============================================
+   FORM ELEMENTS
+   ============================================ */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: .45rem;
+  margin-bottom: 1.2rem;
+}
+
+.form-label {
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  border: 1.5px solid rgba(201,116,138,.2);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  font-family: var(--font-body);
+  font-size: .9rem;
+  color: var(--text);
+  background: rgba(253,246,240,.6);
+  outline: none;
+  transition: all var(--trans-fast);
+  width: 100%;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--rose);
+  background: var(--white);
+  box-shadow: 0 0 0 3px rgba(201,116,138,.10);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--muted-light);
+  font-size: .85rem;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+/* === ABSOLUTE FIX FOR ALL IMAGE CONTAINERS === */
+  .hero-img-wrap img,
+  .about-img-box img,
+  .g-item img {
+    object-fit: contain !important;
+    background-color: var(--blush-light) !important;
+    padding: 10px;
+  }
+  /* === FINAL IMAGE FRAME ALIGNMENT FIX === */
+  .hero-img-wrap img,
+  .about-img-box img,
+  .g-item img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center 20% !important; /* Face aur head ko center mein lock karne ke liye */
+  }
