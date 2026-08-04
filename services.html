@@ -35,12 +35,16 @@
     .price-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.8rem; margin-bottom: 4.5rem; }
     .price-card {
       background: var(--white); border: 1px solid rgba(242,196,206,.4);
-      border-radius: var(--radius-lg); padding: 2rem 2.2rem;
+      border-radius: var(--radius-lg); overflow: hidden;
       position: relative; box-shadow: 0 10px 30px rgba(0,0,0,.05);
       transition: transform var(--trans-fast), box-shadow var(--trans-fast);
     }
     .price-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,.09); }
     .price-card--premium { border-color: var(--rose); }
+    .price-card-img {
+      width: 100%; height: 220px; object-fit: cover; display: block;
+    }
+    .price-card-body { padding: 2rem 2.2rem; position: relative; }
     .price-card-tag {
       position: absolute; top: -13px; right: 24px;
       background: var(--rose); color: var(--white);
@@ -110,13 +114,13 @@
     .dark-card .price-card-amount { color: var(--blush); font-size: 1.4rem; }
     .outstation-note { text-align: center; color: rgba(255,255,255,.5); font-size: .8rem; font-style: italic; margin-top: 2rem; position: relative; z-index: 1; }
 
-    /* ---------- Salon menu (hair + add-ons) ---------- */
-    .salon-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; }
+    /* ---------- Salon menu (hair only now) ---------- */
+    .salon-grid { display: grid; grid-template-columns: 1fr; gap: 1.6rem; max-width: 600px; margin: 0 auto; }
     .menu-category { background: var(--white); border: 1px solid rgba(242,196,206,.35); border-radius: var(--radius-md); padding: 1.8rem 2rem; }
     .menu-category h4 { font-family: var(--font-display); font-size: 1.2rem; color: var(--text); border-bottom: 1px solid rgba(201,169,110,.3); padding-bottom: .8rem; margin-bottom: 1.1rem; }
     .menu-category ul { list-style: none; padding: 0; margin: 0; display: grid; gap: .75rem; }
-    .menu-category li { display: flex; justify-content: space-between; font-size: .88rem; color: var(--muted); }
-    .menu-category li span:last-child { font-family: var(--font-display); font-weight: 600; color: var(--rose); }
+    .menu-category li { display: flex; justify-content: space-between; align-items: baseline; gap: .8rem; font-size: .88rem; color: var(--muted); }
+    .menu-category li span:last-child { font-family: var(--font-display); font-weight: 600; color: var(--rose); white-space: nowrap; }
 
     .note-box {
       background: rgba(201,169,110,.1); border: 1px solid rgba(201,169,110,.3);
@@ -124,13 +128,27 @@
       margin-top: 1.5rem; font-size: .84rem; color: var(--muted); line-height: 1.7;
     }
 
+    /* ---------- Responsive ---------- */
     @media (max-width: 900px) {
-      .price-grid-2, .salon-grid { grid-template-columns: 1fr; }
+      .price-grid-2 { grid-template-columns: 1fr; }
       .occasion-grid { grid-template-columns: 1fr 1fr; }
       .outstation-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 560px) {
+      .page-hero { padding: 100px 6vw 40px; min-height: 30vh; }
       .occasion-grid { grid-template-columns: 1fr; }
+      .price-card-body { padding: 1.5rem 1.4rem; }
+      .price-card-img { height: 170px; }
+      .price-card-head { flex-direction: column; gap: .4rem; }
+      .price-card-amount { font-size: 1.4rem; }
+      .std-card { padding: 1.1rem 1.2rem; }
+      .family-card { padding: 1.3rem 1.4rem; }
+      .family-card li { flex-direction: column; align-items: flex-start; gap: .2rem; }
+      .outstation-section { padding: 2.6rem 1.2rem; border-radius: 24px; }
+      .outstation-grid { gap: .9rem; }
+      .dark-card { padding: 1.2rem; }
+      .menu-category { padding: 1.4rem 1.3rem; }
+      .menu-category li { font-size: .84rem; }
     }
   </style>
 </head>
@@ -178,29 +196,35 @@
 
   <div class="price-grid-2" data-reveal="up">
     <div class="price-card price-card--premium">
-      <span class="price-card-tag">Most Popular</span>
-      <div class="price-card-head">
-        <h3>Bridal Royal (HD)</h3>
-        <span class="price-card-amount">₹18,999</span>
+      <img class="price-card-img" src="https://images.pexels.com/photos/29368877/pexels-photo-29368877.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Bridal Royal HD Makeup"/>
+      <div class="price-card-body">
+        <span class="price-card-tag">Most Popular</span>
+        <div class="price-card-head">
+          <h3>Bridal Royal (HD)</h3>
+          <span class="price-card-amount">₹18,999</span>
+        </div>
+        <ul class="price-card-list">
+          <li>Draping & Hair Do</li>
+          <li>3D Mink Eye Lashes</li>
+          <li>Hair Extension Included</li>
+          <li>Eye Lenses Included</li>
+          <li>Higher Brand HD Products (skin-type based)</li>
+        </ul>
       </div>
-      <ul class="price-card-list">
-        <li>Draping & Hair Do</li>
-        <li>3D Mink Eye Lashes</li>
-        <li>Hair Extension Included</li>
-        <li>Eye Lenses Included</li>
-        <li>Higher Brand HD Products (skin-type based)</li>
-      </ul>
     </div>
     <div class="price-card">
-      <div class="price-card-head">
-        <h3>Bridal Deluxe</h3>
-        <span class="price-card-amount">₹12,999</span>
+      <img class="price-card-img" src="https://images.pexels.com/photos/30825617/pexels-photo-30825617.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Bridal Deluxe Makeup"/>
+      <div class="price-card-body">
+        <div class="price-card-head">
+          <h3>Bridal Deluxe</h3>
+          <span class="price-card-amount">₹12,999</span>
+        </div>
+        <ul class="price-card-list">
+          <li>Draping & Hair Do</li>
+          <li>Makeup & Eye Lashes</li>
+          <li>Professional Styling</li>
+        </ul>
       </div>
-      <ul class="price-card-list">
-        <li>Draping & Hair Do</li>
-        <li>Makeup & Eye Lashes</li>
-        <li>Professional Styling</li>
-      </ul>
     </div>
   </div>
 
@@ -300,17 +324,18 @@
   </div>
 </section>
 
-<!-- ================= SALON SERVICE MENU ================= -->
+<!-- ================= SALON SERVICE MENU (Hair only) ================= -->
 <section class="section container">
   <div class="price-section-title" data-reveal="up">
     <p class="eyebrow" style="color:var(--gold);">✦ Finishing Touches</p>
-    <h2>Hair Styling & <em>Add-ons</em></h2>
+    <h2>Hair Styling</h2>
   </div>
 
   <div class="salon-grid" data-reveal="up">
     <div class="menu-category">
       <h4>💆‍♀️ Hair Styling</h4>
       <ul>
+        <li><span>Hair Do</span><span>Starting from ₹500</span></li>
         <li><span>Hair Straightening</span><span>₹350</span></li>
         <li><span>Hair Curls</span><span>₹400</span></li>
         <li><span>Basic Hair Bun</span><span>₹460</span></li>
@@ -318,14 +343,6 @@
         <li><span>Massi Hair Style</span><span>₹600</span></li>
         <li><span>Celebrity Hair Style</span><span>₹700</span></li>
         <li><span>Celebrity + Original Flower</span><span>₹1,000</span></li>
-      </ul>
-    </div>
-    <div class="menu-category">
-      <h4>🌸 Add-ons</h4>
-      <ul>
-        <li><span>Face Makeup</span><span>₹600</span></li>
-        <li><span>Eye Makeup</span><span>₹400</span></li>
-        <li><span>Saree Draping</span><span>₹200</span></li>
       </ul>
     </div>
   </div>
