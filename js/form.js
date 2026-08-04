@@ -1,6 +1,3 @@
-/* ============================================
-   DIVYA MAKEUP STUDIO — FORM JS
-   ============================================ */
 
 const form = document.getElementById('booking-form');
 if (form) {
@@ -28,7 +25,7 @@ if (form) {
     // WhatsApp message
     const msg = `Hello Divya Makeup Studio! 🌸%0A%0ABooking Request:%0AName: ${encodeURIComponent(name)}%0APhone: ${phone}%0AService: ${service}%0ADate: ${date}%0ATime: ${time}`;
     showMsg('✅ Booking confirmed! Redirecting to WhatsApp...', 'success');
-    setTimeout(() => { window.open(`https://wa.me/919876543210?text=${msg}`, '_blank'); }, 1500);
+    setTimeout(() => { window.open(`https://wa.me/917906704302?text=${msg}`, '_blank'); }, 1500);
   });
 }
 
