@@ -41,9 +41,15 @@
     }
     .price-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,.09); }
     .price-card--premium { border-color: var(--rose); }
+    
     .price-card-img {
-      width: 100%; height: 220px; object-fit: cover; display: block;
+      width: 100%; 
+      height: 350px; 
+      object-fit: cover; 
+      object-position: center; 
+      display: block;
     }
+    
     .price-card-body { padding: 2rem 2.2rem; position: relative; }
     .price-card-tag {
       position: absolute; top: -13px; right: 24px;
@@ -114,7 +120,7 @@
     .dark-card .price-card-amount { color: var(--blush); font-size: 1.4rem; }
     .outstation-note { text-align: center; color: rgba(255,255,255,.5); font-size: .8rem; font-style: italic; margin-top: 2rem; position: relative; z-index: 1; }
 
-    /* ---------- Salon menu (hair only now) ---------- */
+    /* ---------- Salon menu ---------- */
     .salon-grid { display: grid; grid-template-columns: 1fr; gap: 1.6rem; max-width: 600px; margin: 0 auto; }
     .menu-category { background: var(--white); border: 1px solid rgba(242,196,206,.35); border-radius: var(--radius-md); padding: 1.8rem 2rem; }
     .menu-category h4 { font-family: var(--font-display); font-size: 1.2rem; color: var(--text); border-bottom: 1px solid rgba(201,169,110,.3); padding-bottom: .8rem; margin-bottom: 1.1rem; }
@@ -138,7 +144,7 @@
       .page-hero { padding: 100px 6vw 40px; min-height: 30vh; }
       .occasion-grid { grid-template-columns: 1fr; }
       .price-card-body { padding: 1.5rem 1.4rem; }
-      .price-card-img { height: 170px; }
+      .price-card-img { height: 300px; } 
       .price-card-head { flex-direction: column; gap: .4rem; }
       .price-card-amount { font-size: 1.4rem; }
       .std-card { padding: 1.1rem 1.2rem; }
@@ -187,7 +193,6 @@
   </div>
 </div>
 
-<!-- ================= STUDIO BRIDAL COLLECTION ================= -->
 <section class="section container">
   <div class="price-section-title" data-reveal="up">
     <p class="eyebrow" style="color:var(--gold);">✦ Excellence in Artistry</p>
@@ -196,7 +201,7 @@
 
   <div class="price-grid-2" data-reveal="up">
     <div class="price-card price-card--premium">
-      <img class="price-card-img" src="https://images.pexels.com/photos/29368877/pexels-photo-29368877.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Bridal Royal HD Makeup"/>
+      <img class="price-card-img" src="https://images.unsplash.com/photo-1684868265714-fd2300637c23?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bridal Royal HD Makeup"/>
       <div class="price-card-body">
         <span class="price-card-tag">Most Popular</span>
         <div class="price-card-head">
@@ -213,7 +218,7 @@
       </div>
     </div>
     <div class="price-card">
-      <img class="price-card-img" src="https://images.pexels.com/photos/30825617/pexels-photo-30825617.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Bridal Deluxe Makeup"/>
+      <img class="price-card-img" src="https://images.unsplash.com/photo-1684868682581-4cac3af5b8d4?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bridal Deluxe Makeup"/>
       <div class="price-card-body">
         <div class="price-card-head">
           <h3>Bridal Deluxe</h3>
@@ -228,7 +233,6 @@
     </div>
   </div>
 
-  <!-- ================= OCCASIONS & FUNCTIONS ================= -->
   <div class="price-section-title" data-reveal="up">
     <p class="eyebrow" style="color:var(--gold);">✦ Every Celebration</p>
     <h2>Occasions & <em>Functions</em></h2>
@@ -282,7 +286,6 @@
   </div>
 </section>
 
-<!-- ================= OUT STATION WEDDING (dark) ================= -->
 <section class="section container">
   <div class="outstation-section" data-reveal="up">
     <div class="outstation-head">
@@ -324,7 +327,6 @@
   </div>
 </section>
 
-<!-- ================= SALON SERVICE MENU (Hair only) ================= -->
 <section class="section container">
   <div class="price-section-title" data-reveal="up">
     <p class="eyebrow" style="color:var(--gold);">✦ Finishing Touches</p>
@@ -335,14 +337,13 @@
     <div class="menu-category">
       <h4>💆‍♀️ Hair Styling</h4>
       <ul>
-        <li><span>Hair Do</span><span>Starting from ₹500</span></li>
-        <li><span>Hair Straightening</span><span>₹350</span></li>
-        <li><span>Hair Curls</span><span>₹400</span></li>
-        <li><span>Basic Hair Bun</span><span>₹460</span></li>
-        <li><span>Stylish Hair Bun</span><span>₹500</span></li>
-        <li><span>Massi Hair Style</span><span>₹600</span></li>
-        <li><span>Celebrity Hair Style</span><span>₹700</span></li>
-        <li><span>Celebrity + Original Flower</span><span>₹1,000</span></li>
+        <li><span>Hair Straightening</span><span>Starting ₹350</span></li>
+        <li><span>Hair Curls</span><span>Starting ₹400</span></li>
+        <li><span>Basic Hair Bun</span><span>Starting ₹460</span></li>
+        <li><span>Stylish Hair Bun</span><span>Starting ₹500</span></li>
+        <li><span>Massi Hair Style</span><span>Starting ₹600</span></li>
+        <li><span>Celebrity Hair Style</span><span>Starting ₹700</span></li>
+        <li><span>Celebrity + Original Flower</span><span>Starting ₹1,000</span></li>
       </ul>
     </div>
   </div>
@@ -389,7 +390,7 @@
         <li><a href="services.html">Party Makeup HD</a></li>
         <li><a href="services.html">Hair Styling</a></li>
         <li><a href="services.html">Saree Draping</a></li>
-        <li><a href="services.html">Mehendi Makeup</a></li>
+        <li><a href="services.html">Beauty Services</a></li>
       </ul>
     </div>
     <div>
@@ -409,8 +410,11 @@
     </div>
   </div>
   <div class="footer-bottom container">
+    
+    <div class="footer-bottom container">
     <span>© 2026 <span>Divya Makeup Studio</span>. All Rights Reserved.</span>
-    <span>Made with <span style="color:var(--rose);">♥</span> in Dehradun</span>
+    <span>Made with <span style="color:var(--rose);">♥</span> by <a href="https://wa.me/917889709840?text=Hello%20Mohammad!%20I%20saw%20the%20Divya%20Makeup%20Studio%20website%20and%20wanted%20to%20connect." target="_blank" style="color:var(--gold); text-decoration:none; font-weight:600; transition: opacity 0.3s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">Mohammad Shakir</a></span>
+  </div>
   </div>
 </footer>
 

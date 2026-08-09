@@ -21,12 +21,37 @@
       background: radial-gradient(circle, rgba(242,196,206,.1) 0%, transparent 70%);
     }
 
+    /* Reels Filter Buttons */
+    .filter-container {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      padding: 8px 24px;
+      border-radius: 20px;
+      border: 1px solid var(--gold);
+      background: transparent;
+      color: var(--deep);
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all var(--ease);
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--grad-rose);
+      color: var(--white);
+      border-color: transparent;
+    }
+
     /* Cinematic Reels Frame CSS */
     .reels-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
-      margin-top: 3rem;
     }
     .reel-card {
       background: var(--white);
@@ -38,6 +63,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      animation: fadeIn 0.5s ease;
     }
     .reel-card:hover {
       transform: translateY(-8px);
@@ -115,15 +141,53 @@
     }
     .lightbox-close:hover { opacity: 1; }
     
+    /* Responsive Adjustments */
     @media (max-width: 768px) {
       .masonry { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
       .m-item:nth-child(1) { grid-column: span 2; height: 300px; }
       .m-item { height: 220px; }
     }
-    @media (max-width: 480px) {
-      .masonry { grid-template-columns: 1fr; }
-      .m-item:nth-child(1) { grid-column: span 1; height: 280px; }
-      .m-item { height: 240px; }
+
+    /* MOBILE FIX FOR VIDEOS & PHOTO FRAMING */
+    @media (max-width: 600px) {
+      /* Reels Fix (2 in a row) */
+      .reels-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+      .reel-card { padding: 8px; border-radius: 16px; }
+      .reel-title { font-size: 1rem; margin-top: 8px; }
+      .reel-subtitle { font-size: 0.7rem; }
+      .reel-frame { border-radius: 10px; }
+      
+      /* Photo Gallery Fix */
+      .masonry { 
+        grid-template-columns: 1fr; /* Single column */
+        gap: 1.5rem; /* Better spacing */
+        grid-template-rows: auto; /* Remove fixed row height */
+      }
+      .m-item { 
+        grid-column: span 1; 
+        height: auto; /* No fixed height */
+      }
+      
+      /* Apply aspect ratios and object positions for portrait items */
+      .m-item:nth-child(1), /* Red Bridal */
+      .m-item:nth-child(4)  /* Bridal Side Profile */
+      { 
+        aspect-ratio: 4 / 5; /* Dynamic frame for portrait images */
+      }
+      
+      .m-item:nth-child(2), /* Divya in Action */
+      .m-item:nth-child(3), /* Party Makeup */
+      .m-item:nth-child(5)  /* Silver Glam */
+      {
+        aspect-ratio: 1 / 1; /* Make these square on mobile */
+      }
+
+      /* Detailed Position Logic for Portrait Images */
+      .m-item:nth-child(1) img { object-position: 50% 20% !important; } /* Focus top-center for face */
+      .m-item:nth-child(4) img { object-position: 50% 20% !important; } /* Focus top-center for face */
+
+      /* Position Action photo center */
+      .m-item:nth-child(2) img { object-position: 50% 50% !important; } /* Center Action photo */
     }
   </style>
 </head>
@@ -170,74 +234,81 @@
     </h2>
   </div>
 
+  <div class="filter-container" data-reveal="up">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="bridal">Bridal Makeup</button>
+    <button class="filter-btn" data-filter="party">Party Makeup</button>
+    <button class="filter-btn" data-filter="studio">Studio/Tutorials</button>
+  </div>
+
   <div class="reels-grid">
-    <div class="reel-card" data-reveal="up" data-delay="100">
+    <div class="reel-card" data-category="bridal">
       <video class="reel-frame" controls playsinline preload="metadata">
-        <source src="images/reels/bridal1.mp4" type="video/mp4">
+        <source src="images/reels/bridal1.mp4#t=0.001" type="video/mp4">
       </video>
       <div class="reel-title">Royal Bridal Look</div>
       <div class="reel-subtitle">HD Makeup</div>
     </div>
 
-    <div class="reel-card" data-reveal="up" data-delay="200">
+    <div class="reel-card" data-category="bridal">
       <video class="reel-frame" controls playsinline preload="metadata">
-        <source src="images/reels/bridal2.mp4" type="video/mp4">
+        <source src="images/reels/bridal2.mp4#t=0.001" type="video/mp4">
       </video>
       <div class="reel-title">Ethereal Bride</div>
       <div class="reel-subtitle">Luxury Makeover</div>
     </div>
 
-    <div class="reel-card" data-reveal="up" data-delay="300">
+    <div class="reel-card" data-category="bridal">
       <video class="reel-frame" controls playsinline preload="metadata">
-        <source src="images/reels/bridal3.mp4" type="video/mp4">
+        <source src="images/reels/bridal3.mp4#t=0.001" type="video/mp4">
       </video>
       <div class="reel-title">Classic Bridal</div>
       <div class="reel-subtitle">Traditional Glam</div>
     </div>
 
-    <div class="reel-card" data-reveal="up" data-delay="100">
+    <div class="reel-card" data-category="bridal">
       <video class="reel-frame" controls playsinline preload="metadata">
-        <source src="images/reels/bridal4.mp4" type="video/mp4">
+        <source src="images/reels/bridal4.mp4#t=0.001" type="video/mp4">
       </video>
       <div class="reel-title">Modern Bride</div>
       <div class="reel-subtitle">Flawless Base</div>
     </div>
 
-    <div class="reel-card" data-reveal="up" data-delay="200">
+    <div class="reel-card" data-category="party">
       <video class="reel-frame" controls playsinline preload="metadata">
-        <source src="images/reels/partymakeup1.mp4" type="video/mp4">
+        <source src="images/reels/partymakeup1.mp4#t=0.001" type="video/mp4">
       </video>
       <div class="reel-title">Party Glam</div>
       <div class="reel-subtitle">Subtle Elegance</div>
     </div>
 
-    <div class="reel-card" data-reveal="up" data-delay="300">
+    <div class="reel-card" data-category="party">
       <video class="reel-frame" controls playsinline preload="metadata">
-        <source src="images/reels/partymakeup2.mp4" type="video/mp4">
+        <source src="images/reels/partymakeup2.mp4#t=0.001" type="video/mp4">
       </video>
       <div class="reel-title">Evening Glow</div>
       <div class="reel-subtitle">HD Party Look</div>
     </div>
 
-    <div class="reel-card" data-reveal="up" data-delay="100">
+    <div class="reel-card" data-category="party">
       <video class="reel-frame" controls playsinline preload="metadata">
-        <source src="images/reels/partymakeup3.mp4" type="video/mp4">
+        <source src="images/reels/partymakeup3.mp4#t=0.001" type="video/mp4">
       </video>
       <div class="reel-title">Cocktail Ready</div>
       <div class="reel-subtitle">Smokey Eyes</div>
     </div>
 
-    <div class="reel-card" data-reveal="up" data-delay="200">
+    <div class="reel-card" data-category="studio">
       <video class="reel-frame" controls playsinline preload="metadata">
-        <source src="images/reels/certified.mp4" type="video/mp4">
+        <source src="images/reels/certified.mp4#t=0.001" type="video/mp4">
       </video>
       <div class="reel-title">Certified Expert</div>
       <div class="reel-subtitle">Studio Moments</div>
     </div>
 
-    <div class="reel-card" data-reveal="up" data-delay="300">
+    <div class="reel-card" data-category="studio">
       <video class="reel-frame" controls playsinline preload="metadata">
-        <source src="images/reels/tutorial.mp4" type="video/mp4">
+        <source src="images/reels/tutorial.mp4#t=0.001" type="video/mp4">
       </video>
       <div class="reel-title">Makeup Masterclass</div>
       <div class="reel-subtitle">Step-by-Step</div>
@@ -245,7 +316,7 @@
   </div>
 </section>
 
-<section class="section container" style="padding-top: 0;">
+<section class="section container" style="padding-top: 0; padding-bottom: 5rem;">
   <div style="text-align:center;" data-reveal="up">
     <p class="eyebrow">Still Photography</p>
     <h2 style="font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;color:var(--deep);margin:.6rem 0;">
@@ -267,7 +338,7 @@
       <div class="m-overlay"><div class="m-overlay-text">Party Glam ✦</div></div>
     </div>
     <div class="m-item" data-reveal="scale" data-delay="400" onclick="openLightbox('images/gallery/divya_pic2.jpeg')">
-      <img src="images/gallery/divya_pic2.jpeg" alt="Bridal Side Profile" style="object-position:center 10%;"/>
+      <img src="images/gallery/divya_pic2.jpg" alt="Bridal Side Profile" style="object-position:center 10%;"/>
       <div class="m-overlay"><div class="m-overlay-text">Bridal Elegance ✦</div></div>
     </div>
     <div class="m-item" data-reveal="scale" data-delay="500" onclick="openLightbox('images/gallery/divya_pic_1.jpg')">
@@ -276,52 +347,6 @@
     </div>
   </div>
   <p style="text-align:center;margin-top:1.5rem;font-size:.8rem;color:var(--muted);font-style:italic;">✦ Click on any image to view full size</p>
-</section>
-
-<section class="section" style="background:var(--blush-light);">
-  <div class="container">
-    <div style="text-align:center;margin-bottom:3rem;" data-reveal="up">
-      <p class="eyebrow">Transformations</p>
-      <h2 style="font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;color:var(--deep);margin:.6rem 0;">
-        Before & <em>After</em>
-      </h2>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:1.5rem;">
-      <div class="card-3d" style="border-radius:20px;overflow:hidden;background:#fff;" data-reveal="up" data-delay="100">
-        <div style="display:grid;grid-template-columns:1fr 1fr;">
-          <div style="height:220px;background:linear-gradient(145deg,#e8dcd0,#d4b8a8);display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--font-display);color:rgba(107,58,74,.5);font-size:.9rem;gap:.3rem;">
-            <span style="font-size:2rem;">👤</span>Before
-          </div>
-          <div style="height:220px;overflow:hidden;">
-            <img src="images/gallery/divya_pic3.jpeg" alt="After" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;"/>
-          </div>
-        </div>
-        <div style="padding:1rem 1.2rem;font-size:.95rem;font-weight:600;color:var(--deep);">Bridal Transformation</div>
-      </div>
-      <div class="card-3d" style="border-radius:20px;overflow:hidden;background:#fff;" data-reveal="up" data-delay="200">
-        <div style="display:grid;grid-template-columns:1fr 1fr;">
-          <div style="height:220px;background:linear-gradient(145deg,#e8dcd0,#d4b8a8);display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--font-display);color:rgba(107,58,74,.5);font-size:.9rem;gap:.3rem;">
-            <span style="font-size:2rem;">👤</span>Before
-          </div>
-          <div style="height:220px;overflow:hidden;">
-            <img src="images/gallery/divya_pic_1.jpg" alt="After" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;"/>
-          </div>
-        </div>
-        <div style="padding:1rem 1.2rem;font-size:.95rem;font-weight:600;color:var(--deep);">Silver Glam Look</div>
-      </div>
-      <div class="card-3d" style="border-radius:20px;overflow:hidden;background:#fff;" data-reveal="up" data-delay="300">
-        <div style="display:grid;grid-template-columns:1fr 1fr;">
-          <div style="height:220px;background:linear-gradient(145deg,#e8dcd0,#d4b8a8);display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--font-display);color:rgba(107,58,74,.5);font-size:.9rem;gap:.3rem;">
-            <span style="font-size:2rem;">👤</span>Before
-          </div>
-          <div style="height:220px;overflow:hidden;">
-            <img src="images/gallery/divya_pic2.jpeg" alt="After" style="width:100%;height:100%;object-fit:cover;object-position:center 10%;"/>
-          </div>
-        </div>
-        <div style="padding:1rem 1.2rem;font-size:.95rem;font-weight:600;color:var(--deep);">Bridal Elegance</div>
-      </div>
-    </div>
-  </div>
 </section>
 
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
@@ -337,21 +362,32 @@
       </div>
       <p class="footer-desc">Luxury bridal & party makeup in Dehradun, Uttarakhand.</p>
       <div class="footer-socials">
-        <a href="https://www.instagram.com/divyamakeupstudio1" target="_blank" class="footer-social-btn">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.
+        <a href="https://www.instagram.com/divyamakeupstudio1" target="_blank" class="footer-social-btn" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
         </a>
-        <a href="https://wa.me/917906704302" target="_blank" class="footer-social-btn">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2。586-5。768 5。766-.001 1。298。38 2。27 1。019 3。287l-.582 2。128 2。182-.573c。978。58 1。911。928 3。145。929 3。178 0 5。767-2。587 5。768-5。766。001-3。187-2。575-5。77-5。764-5。771zm3。39２８２４４c-.１４４．４０５-.８３７．７７４-１．１７．８２４-.２９９．０４５-.６７７．０６３-１．０９２-.０６９-.２５２-.０８-.５７５-.１８７-.９８８-.３６５-１．７３９-.７５１-２．８７４-２．５０２-２．９６１-２．６１７-.０８７-.１１６-.７０８-.９４-.７０８-１．７９３s．４４８-１．２７３．６０７-１．４４６c．１５９-.１７３．３４６-.２１７．４６２-.２１７l．３３２．００６c．１０６．００５．２４９-.０４．３９．２９８.
+        <a href="https://wa.me/917906704302" target="_blank" class="footer-social-btn" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/></svg>
         </a>
-        <a href="https://wa.me/917906704302" target="_blank" class="footer-social-btn">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2。586-5。768 5。766-.001 1。298。38 2。27 1。019 3。287l-.582 2。128 2。182-.573c。978。58 1。911。928 3。145。929 3。178 0 5。767-2。587 5。768-5。766。001-3。187-2。575-5。77-5。764-5。771zm3。39２８２４４c-.１４４．４０５-.８３７．７７４-１．１７．８２４-.２９９．０４５-.６７７．０６３-１．０９２-.０６９-.２５２-.０８-.５７５-.１８７-.９８８-.３６５-１．７３９-.７５１-２．８７４-２．５０２-２．９６１-２．６１７-.０８７-.１１６-.７０８-.９４-.７０８-１．７９３s．４４８-１．２７３．６０７-１．４４６c．１５９-.１７３．３４６-.２１７．４６２-.２１７l．３３２．００６c．１０６．００５．２４９-.０４．３９．２９８.
-        </a>
-        <a href="https://wa.me/917906704302" target="_blank" class="footer-social-btn">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2。586-5。768 5。766-.001 1。298。38 2。27 1。019 3。287l-.582 2。128 2。182-.573c。978。58 1。911。928 3。145。929 3。178 0 5。767-2。587 5。768-5。766。001-3。187-2。575-5。77-5。764-5。771zm3。39２８２４４c-.１４４．４０５-.８３７．７７４-１．１７．８２４-.２９９．０４５-.６７７．０６３-１．０９２-.０６９-.２５２-.０８-.５７５-.１８７-.９８８-.３６５-１．７３９-.７５１-２．８７４-２．５０２-２．９６１-２．６１７-.０８７-.１１６-.７０８-.９４-.７０８-１．７９３s．４４８-１．２７３．６０７-１．４４６c．１５９-.１７３．３４６-.２１７．４６２-.２１７l．３３２．００６c．１０６．００５．２４９-.０４．３９．２９８.
+      </div>
+    </div>
+    <div>
+      <div class="footer-heading">Quick Links</div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services & Pricing</a></li>
+        <li><a href="gallery.html">Portfolio Gallery</a></li>
+        <li><a href="about.html">About Divya</a></li>
+        <li><a href="contact.html">Book Appointment</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Services</div>
+      <ul class="footer-links">
+        <li><a href="services.html">Bridal Makeup</a></li>
         <li><a href="services.html">Party Makeup HD</a></li>
         <li><a href="services.html">Hair Styling</a></li>
         <li><a href="services.html">Saree Draping</a></li>
-        <li><a href="services.html">Mehendi Makeup</a></li>
+        <li><a href="services.html">Beauty Services</a></li>
       </ul>
     </div>
     <div>
@@ -371,8 +407,11 @@
     </div>
   </div>
   <div class="footer-bottom container">
+    <
+    <div class="footer-bottom container">
     <span>© 2026 <span>Divya Makeup Studio</span>. All Rights Reserved.</span>
-    <span>Made with <span style="color:var(--rose);">♥</span> in Dehradun</span>
+    <span>Made with <span style="color:var(--rose);">♥</span> by <a href="https://wa.me/917889709840?text=Hello%20Mohammad!%20I%20saw%20the%20Divya%20Makeup%20Studio%20website%20and%20wanted%20to%20connect." target="_blank" style="color:var(--gold); text-decoration:none; font-weight:600; transition: opacity 0.3s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">Mohammad Shakir</a></span>
+  </div>
   </div>
 </footer>
 
@@ -397,14 +436,36 @@
   }
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
-  // VIDEO PLAY/PAUSE LOGIC (Jisme ek chalega toh dusra rukega)
+  // VIDEO PLAY/PAUSE LOGIC
   const allVideos = document.querySelectorAll('.reel-frame');
   allVideos.forEach(video => {
     video.addEventListener('play', () => {
-      // Jab ye video play ho, toh baaki sab ko pause kar do
       allVideos.forEach(otherVideo => {
         if (otherVideo !== video) {
           otherVideo.pause();
+        }
+      });
+    });
+  });
+
+  // FILTER LOGIC FOR REELS
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const reelCards = document.querySelectorAll('.reel-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Remove active class from all buttons
+      filterBtns.forEach(b => b.classList.remove('active'));
+      // Add active class to clicked button
+      btn.classList.add('active');
+      
+      const filterValue = btn.getAttribute('data-filter');
+      
+      reelCards.forEach(card => {
+        if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
         }
       });
     });
