@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +10,6 @@
   <link rel="stylesheet" href="css/animations.css"/>
   <link rel="stylesheet" href="css/responsive.css"/>
   <style>
-    /* ── HERO ── */
     .hero-section {
       min-height: 100vh;
       display: grid;
@@ -29,173 +29,83 @@
       box-shadow: var(--shadow-xl);
       border: 2px solid rgba(201,169,110,.3);
     }
-    .hero-img-wrap img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      transition: transform .6s var(--ease);
-    }
-    .hero-img-wrap:hover img { transform: scale(1.04); }
+    .hero-img-wrap img { width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .6s var(--ease); }
+    .hero-img-wrap:hover img { transform:scale(1.04); }
     .hero-img-badge {
-      position: absolute;
-      bottom: 24px; left: 24px;
-      background: rgba(253,246,240,.92);
-      backdrop-filter: blur(12px);
-      border-radius: 16px;
-      padding: 14px 20px;
-      box-shadow: var(--shadow-md);
-      border: 1px solid rgba(201,169,110,.2);
-      z-index: 2;
+      position:absolute;bottom:24px;left:24px;
+      background:rgba(253,246,240,.92);backdrop-filter:blur(12px);
+      border-radius:16px;padding:14px 20px;
+      box-shadow:var(--shadow-md);border:1px solid rgba(201,169,110,.2);z-index:2;
     }
-    .hero-img-badge .badge-num {
-      font-family: var(--font-display);
-      font-size: 1.8rem;
-      font-weight: 600;
-      color: var(--deep);
-      line-height: 1;
-    }
-    .hero-img-badge .badge-label {
-      font-size: .7rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
+    .hero-img-badge .badge-num { font-family:var(--font-display);font-size:1.8rem;font-weight:600;color:var(--deep);line-height:1; }
+    .hero-img-badge .badge-label { font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold); }
     .hero-tag {
-      position: absolute;
-      top: 24px; right: -10px;
-      background: var(--grad-rose);
-      color: var(--white);
-      padding: 8px 22px;
-      border-radius: 20px 0 0 20px;
-      font-size: .72rem;
-      font-weight: 500;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      box-shadow: var(--shadow-rose);
-      z-index: 2;
+      position:absolute;top:24px;right:-10px;
+      background:var(--grad-rose);color:var(--white);
+      padding:8px 22px;border-radius:20px 0 0 20px;
+      font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+      box-shadow:var(--shadow-rose);z-index:2;
     }
-    .hero-stats {
-      display: flex;
-      gap: 2.5rem;
-      margin-top: 3rem;
-      padding-top: 2rem;
-      border-top: 1px solid rgba(201,116,138,.18);
-    }
-    .stat-num {
-      font-family: var(--font-display);
-      font-size: 2.2rem;
-      font-weight: 600;
-      color: var(--deep);
-      line-height: 1;
-    }
-    .stat-label {
-      font-size: .7rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-top: 4px;
-    }
+    .hero-stats { display:flex;gap:2.5rem;margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(201,116,138,.18); }
+    .stat-num { font-family:var(--font-display);font-size:2.2rem;font-weight:600;color:var(--deep);line-height:1; }
+    .stat-label { font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:4px; }
 
-    /* ── ABOUT ── */
-    .about-section {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5vw;
-      align-items: center;
-      padding: var(--section-pad);
-      background: var(--white);
-    }
-    .about-img-box {
-      height: 520px;
-      border-radius: 120px 40px 120px 40px;
-      overflow: hidden;
-      box-shadow: var(--shadow-xl);
-      border: 2px solid rgba(201,169,110,.2);
-    }
-    .about-img-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-    }
-    .about-list { margin-top: 1.8rem; display: flex; flex-direction: column; gap: .9rem; }
-    .about-item { display: flex; align-items: center; gap: 1rem; font-size: .9rem; color: var(--muted); }
-    .about-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--rose); flex-shrink: 0; }
+    .about-section { display:grid;grid-template-columns:1fr 1fr;gap:5vw;align-items:center;padding:var(--section-pad);background:var(--white); }
+    .about-img-box { height:520px;border-radius:120px 40px 120px 40px;overflow:hidden;box-shadow:var(--shadow-xl);border:2px solid rgba(201,169,110,.2); }
+    .about-img-box img { width:100%;height:100%;object-fit:cover;object-position:center top; }
+    .about-list { margin-top:1.8rem;display:flex;flex-direction:column;gap:.9rem; }
+    .about-item { display:flex;align-items:center;gap:1rem;font-size:.9rem;color:var(--muted); }
+    .about-dot { width:8px;height:8px;border-radius:50%;background:var(--rose);flex-shrink:0; }
 
-    /* ── SERVICES ── */
-    .services-section { padding: var(--section-pad); background: var(--cream); }
-    .service-cards { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; margin-top: 3rem; }
+    .services-section { padding:var(--section-pad);background:var(--cream); }
+    .service-cards { display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3rem; }
     .service-card {
-      background: var(--white);
-      border-radius: 24px;
-      padding: 2.2rem 1.6rem;
-      border: 1px solid rgba(242,196,206,.3);
-      box-shadow: var(--shadow-sm);
-      transition: all var(--trans-med);
-      position: relative;
-      overflow: hidden;
-      text-align: center;
+      background:var(--white);border-radius:24px;padding:2.2rem 1.6rem;
+      border:1px solid rgba(242,196,206,.3);box-shadow:var(--shadow-sm);
+      transition:all var(--trans-med);position:relative;overflow:hidden;text-align:center;
     }
-    .service-card::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: var(--grad-rose);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform var(--trans-med);
-    }
-    .service-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
-    .service-card:hover::after { transform: scaleX(1); }
-    .service-icon { font-size: 2.4rem; margin-bottom: 1rem; }
-    .service-name { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; color: var(--deep); margin-bottom: .5rem; }
-    .service-desc { font-size: .84rem; color: var(--muted); line-height: 1.7; }
+    .service-card::after { content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad-rose);transform:scaleX(0);transform-origin:left;transition:transform var(--trans-med); }
+    .service-card:hover { transform:translateY(-8px);box-shadow:var(--shadow-lg); }
+    .service-card:hover::after { transform:scaleX(1); }
+    .service-icon { font-size:2.4rem;margin-bottom:1rem; }
+    .service-name { font-family:var(--font-display);font-size:1.5rem;font-weight:600;color:var(--deep);margin-bottom:.5rem; }
+    .service-desc { font-size:.84rem;color:var(--muted);line-height:1.7; }
 
-    /* ── TESTIMONIALS ── */
-    .test-section { padding: var(--section-pad); background: var(--white); }
-    .test-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.6rem; margin-top: 3rem; }
-    .test-card { background: var(--cream); border-radius: 24px; padding: 2rem 1.8rem; border: 1px solid rgba(242,196,206,.3); }
-    .test-quote { font-family: var(--font-display); font-size: 4rem; line-height: 1; color: var(--blush); margin-bottom: .3rem; }
-    .test-text { font-size: .88rem; line-height: 1.8; color: var(--muted); font-style: italic; }
-    .test-footer { margin-top: 1.4rem; display: flex; align-items: center; gap: .9rem; }
-    .test-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--grad-rose); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; color: var(--white); }
-    .test-name { font-weight: 500; font-size: .88rem; color: var(--deep); }
-    .test-tag { font-size: .74rem; color: var(--muted); }
-    .test-stars { color: var(--gold); font-size: .85rem; margin-top: 2px; }
+    .test-section { padding:var(--section-pad);background:var(--white); }
+    .test-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;margin-top:3rem; }
+    .test-card { background:var(--cream);border-radius:24px;padding:2rem 1.8rem;border:1px solid rgba(242,196,206,.3); }
+    .test-quote { font-family:var(--font-display);font-size:4rem;line-height:1;color:var(--blush);margin-bottom:.3rem; }
+    .test-text { font-size:.88rem;line-height:1.8;color:var(--muted);font-style:italic; }
+    .test-footer { margin-top:1.4rem;display:flex;align-items:center;gap:.9rem; }
+    .test-avatar { width:44px;height:44px;border-radius:50%;background:var(--grad-rose);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--white); }
+    .test-name { font-weight:500;font-size:.88rem;color:var(--deep); }
+    .test-tag { font-size:.74rem;color:var(--muted); }
+    .test-stars { color:var(--gold);font-size:.85rem;margin-top:2px; }
 
-    /* ── CTA ── */
-    .cta-section {
-      padding: 80px 7vw;
-      background: var(--grad-deep);
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: 3rem;
-    }
-    .cta-title { font-family: var(--font-display); font-size: clamp(2rem,3.5vw,3rem); font-weight: 300; color: var(--white); }
-    .cta-title em { font-style: italic; color: var(--blush); }
-    .cta-sub { font-size: .9rem; color: rgba(255,255,255,.6); margin-top: .8rem; }
+    .cta-section { padding:80px 7vw;background:var(--grad-deep);display:grid;grid-template-columns:1fr auto;align-items:center;gap:3rem; }
+    .cta-title { font-family:var(--font-display);font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--white); }
+    .cta-title em { font-style:italic;color:var(--blush); }
+    .cta-sub { font-size:.9rem;color:rgba(255,255,255,.6);margin-top:.8rem; }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      .hero-section { grid-template-columns: 1fr; padding: 110px 5vw 60px; text-align: center; }
-      .hero-img-wrap { height: 380px; border-radius: 30px; margin: 0 auto; max-width: 360px; }
-      .hero-stats { justify-content: center; }
-      .about-section { grid-template-columns: 1fr; }
-      .about-img-box { height: 350px; max-width: 380px; margin: 0 auto; }
-      .service-cards { grid-template-columns: repeat(2,1fr); }
-      .test-grid { grid-template-columns: 1fr; }
-      .cta-section { grid-template-columns: 1fr; text-align: center; }
+    @media(max-width:900px) {
+      .hero-section { grid-template-columns:1fr;padding:110px 5vw 60px;text-align:center; }
+      .hero-img-wrap { height:380px;border-radius:30px;margin:0 auto;max-width:360px; }
+      .hero-stats { justify-content:center; }
+      .about-section { grid-template-columns:1fr; }
+      .about-img-box { height:350px;max-width:380px;margin:0 auto; }
+      .service-cards { grid-template-columns:repeat(2,1fr); }
+      .test-grid { grid-template-columns:1fr; }
+      .cta-section { grid-template-columns:1fr;text-align:center; }
     }
-    @media (max-width: 480px) {
-      .service-cards { grid-template-columns: 1fr; }
-      .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+    @media(max-width:480px) {
+      .service-cards { grid-template-columns:1fr; }
+      .hero-stats { flex-wrap:wrap;gap:1.5rem; }
     }
   </style>
 </head>
 <body>
 
+<!-- NAVBAR -->
 <nav class="navbar" id="navbar">
   <a href="index.html" class="nav-logo">
     <img src="images/divya_logo.png" alt="Divya Makeup Studio" style="height:52px;width:auto;object-fit:contain;"/>
@@ -211,15 +121,17 @@
   <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
+<!-- MOBILE NAV -->
 <div class="mobile-nav">
   <button class="mobile-nav-close">✕</button>
   <a href="index.html">Home</a>
+  <a href="about.html">About</a>
   <a href="services.html">Services</a>
   <a href="gallery.html">Gallery</a>
-  <a href="about.html">About</a>
   <a href="contact.html">Book Appointment</a>
 </div>
 
+<!-- HERO -->
 <section class="hero-section">
   <div class="blob blob-1"></div>
   <div class="blob blob-2"></div>
@@ -264,10 +176,11 @@
   </div>
 </section>
 
+<!-- ABOUT -->
 <section class="about-section">
   <div data-reveal="right">
     <div class="about-img-box">
-      <img src="https://images.unsplash.com/photo-1709477542149-f4e0e21d590b?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+      <img src="https://images.unsplash.com/photo-1709477542149-f4e0e21d590b?q=80&w=687&auto=format&fit=crop" alt="Bridal Eye Makeup"/>
     </div>
   </div>
   <div data-reveal="left" data-delay="200">
@@ -288,6 +201,7 @@
   </div>
 </section>
 
+<!-- SERVICES -->
 <section class="services-section">
   <div style="text-align:center;" data-reveal="up">
     <p class="eyebrow">Our Expertise</p>
@@ -321,6 +235,7 @@
   </div>
 </section>
 
+<!-- TESTIMONIALS -->
 <section class="test-section">
   <div style="text-align:center;" data-reveal="up">
     <p class="eyebrow">Client Love</p>
@@ -366,6 +281,7 @@
   </div>
 </section>
 
+<!-- CTA -->
 <section class="cta-section">
   <div data-reveal="left">
     <h2 class="cta-title">Ready to Look <em>Stunning?</em></h2>
@@ -376,12 +292,11 @@
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer class="footer">
   <div class="footer-grid container">
     <div class="footer-brand">
-      <div class="footer-brand-badge">
-        <img src="images/divya_logo.png" alt="Divya Makeup Studio" style="height:50px; width:auto; object-fit:contain; display:block;"/>
-      </div>
+      <img src="images/divya_logo.png" alt="Divya Makeup Studio" style="height:64px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.85;"/>
       <p class="footer-desc">Luxury bridal & party makeup in Dehradun, Uttarakhand.</p>
       <div class="footer-socials">
         <a href="https://www.instagram.com/divyamakeupstudio1" target="_blank" class="footer-social-btn" aria-label="Instagram">
@@ -409,7 +324,6 @@
         <li><a href="services.html">Party Makeup HD</a></li>
         <li><a href="services.html">Hair Styling</a></li>
         <li><a href="services.html">Saree Draping</a></li>
-        
       </ul>
     </div>
     <div>
@@ -420,16 +334,16 @@
     </div>
   </div>
   <div class="footer-bottom container">
-    
-    <div class="footer-bottom container">
     <span>© 2026 <span>Divya Makeup Studio</span>. All Rights Reserved.</span>
-    <span>Made with <span style="color:var(--rose);">♥</span> by <a href="https://wa.me/917889709840?text=Hello%20Mohammad!%20I%20saw%20the%20Divya%20Makeup%20Studio%20website%20and%20wanted%20to%20connect." target="_blank" style="color:var(--gold); text-decoration:none; font-weight:600; transition: opacity 0.3s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">Mohammad Shakir</a></span>
-  </div>
+    <span>Made with <span style="color:var(--rose);">♥</span> by <a href="https://wa.me/917889709840" target="_blank" style="color:var(--gold);text-decoration:none;font-weight:600;">Mohammad Shakir</a></span>
   </div>
 </footer>
 
+<!-- WHATSAPP FLOAT -->
 <a href="https://wa.me/917906704302" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
-  <svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/></svg>
+  <svg viewBox="0 0 24 24" width="28" height="28" fill="white">
+    <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/>
+  </svg>
 </a>
 <button class="scroll-top" aria-label="Scroll to top">↑</button>
 
